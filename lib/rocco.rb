@@ -41,6 +41,13 @@ require 'mustache'
 # We use a ruby wrapper around [Pygments](http://pygments.org/) to highlight code
 require 'pygments'
 
+# set encoding for ruby1.9 to UTF-8
+if Object.const_defined?(:Encoding) && !ENV['LANG'] && !ENV['RUBYOPT'].include?('-E')
+  Encoding.default_internal = 'utf-8'
+  Encoding.default_external = 'utf-8'
+end
+
+
 #### Public Interface
 
 # `Rocco.new` takes a source `filename`, an optional list of source filenames
